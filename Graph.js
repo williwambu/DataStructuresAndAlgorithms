@@ -19,6 +19,8 @@ function Graph(v) {
     this.showGraph = showGraph;
     this.dfs = dfs;
     this.bfs = bfs;
+    this.pathTo = pathTo;
+    this.hasPathTo = hasPathTo;
     //this.toString = toString;
 
     //array to store visited nodes
@@ -28,6 +30,8 @@ function Graph(v) {
     for (var i = 0; i < this.vertices; ++i) {
         this.marked[i] = false;
     }
+
+    this.edgeTo = [];
 }
 
 function addEdge(v, w) {
@@ -82,9 +86,9 @@ function bfs(s) {
     while (queue.length > 0) {
         var v = queue.shift(); // remove from front of queue
         if (v == undefined) {
-            console("Visited vertex: " + v);
+            console.log("Visited vertex: " + v);
         }
-        for(var w in this.adj[v]) {
+        for (var w in this.adj[v]) {
             if (!this.marked[w]) {
                 this.edgeTo[w] = v;
                 this.marked[w] = true;
@@ -94,10 +98,34 @@ function bfs(s) {
     }
 }
 
+function hasPathTo(v) {
+    return this.marked[v];
+}
+
+function pathTo(v) {
+    var source = 0;
+    if (!this.hasPathTo(v)) {
+        return undefined;
+    }
+    var path = [];
+    for (var i = v; i != source; i = this.edgeTo[i]) {
+        path.push(i);
+    }
+    path.push(s);
+    return path;
+}
+
 g = new Graph(5);
 g.addEdge(0, 1);
 g.addEdge(0, 2);
 g.addEdge(1, 3);
 g.addEdge(2, 4);
-g.showGraph();
-g.bfs(0);
+var vertex = 4;
+var paths = g.pathTo(vertex);
+while (paths.length > 0) {
+    if (paths.length > 1) {
+        console.log(paths.pop() + '-');
+    } else {
+        console.log(paths.pop());
+    }
+}
