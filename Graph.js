@@ -3,7 +3,11 @@ function Vertex(label) {
     this.label = label;
 }
 
-//v is the number of vertices
+/**
+ * A graph implemeted using adjacency list
+ * @param v is the number of vertices
+ * @constructor
+ */
 function Graph(v) {
     this.vertices = v;
     this.edges = 0;

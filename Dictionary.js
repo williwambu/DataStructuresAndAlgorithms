@@ -30,7 +30,7 @@ function showAll(){
 	}
 }
 
-//count the number of items inthe dictionary
+//count the number of items in the dictionary
 function count(){
 	var n = 0;
 	for(key in this.dataStore){

@@ -21,19 +21,22 @@ function find(item){
 
 	return currNode;
 }
-/*
-	inserts a new element into the list
-	item is the node to insert newElement after
-*/
+/**
+ * inserts a new element into the list
+ * item is the node to insert newElement after
+ * @param newElement
+ * @param item
+ */
 function insert(newElement, item){
 	var newNode = new Node(newElement);
 	var current = this.find(item);
 	newNode.next = current.next; //set the link the new node to what the existing node was linking to
 	current.next = newNode;	 //set the link of the existing item to the new node
 }
-/*
-	display the elements of the linked list
-*/
+
+/**
+ * display the elements of the linked list
+ */
 function display(){
 	var currNode = this.head;
 
