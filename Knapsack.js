@@ -62,5 +62,5 @@ var capacity = 16;
 var value = [4,5,10,11,13];
 var size = [3,4,7,8,9];
 var n = 5;
-console.log(RecurKnapsack(capacity,size,value,n));
+console.log(RecurKnapsack(capacity,size,value,n)); //23
 console.log(DynKnapsack(capacity,size,value,n)); //23
